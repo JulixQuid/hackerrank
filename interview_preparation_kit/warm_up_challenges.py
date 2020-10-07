@@ -79,3 +79,32 @@ def jumpingOnClouds(c):
         i += 1
 
     return steps
+
+def repeatedString(s, n):
+    """
+        Function that returns an integer representing the number of occurrences
+         of 'a' in the prefix of length 'n' in the infinitely repeating string s
+    Args:
+        s: a string to repeat
+        n: the number of characters to consider
+
+    Returns:
+        ocurrences: int
+            number of occurrences of 'a' in the prefix of length 'n' in the
+             infinitely repeating string s
+
+    """
+    a_n = dict()
+    a_i = 0
+    for i in range(len(s)):
+        if s[i] == 'a':
+            a_i += 1
+        a_n[i] = a_i
+    reps = n // len(s)
+    residual = n % len(s)
+    aux = 0
+    if residual > 0:
+        aux = a_n[residual-1]
+    a_occurrences = reps*a_i + aux
+    return a_occurrences
+
